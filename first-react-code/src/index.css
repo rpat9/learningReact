@@ -3,6 +3,16 @@ body {
   padding: 0;
 }
 
-h1 {
+.welcome {
   text-align: center;
+}
+
+.challenge {
+  padding-left: 10px;
+  margin: 5px;
+}
+
+div {
+  padding-left: 10px;
+  margin: 5px;
 }
