@@ -1,6 +1,6 @@
 function Footer(){
     return(
-        <footer>
+        <footer className="footNotes">
             <small>&copy; 2025 RP Development. All rights reserved.</small>
         </footer>
     )

@@ -1,5 +1,6 @@
 body {
   padding: 20px;
+  padding-bottom: 40px;
   font-family: 'Courier New', Courier, monospace;
   background-color: #27292c;
   color: white;
@@ -9,7 +10,7 @@ h1 {
   margin-top: 30px;
 }
 
-span img {
+img {
   vertical-align: middle;
   width: 55px;
 }
@@ -29,13 +30,38 @@ span img {
   display: flex;
 }
 
-.nav-list li {
+.nav-list > li {
   cursor: pointer;
   margin-left: 50px;
-  transition: 0.25s ease-in-out;
+  transition: 0.35s ease-in-out;
 }
 
-.nav-list li:hover {
+.nav-list > li:hover {
   transform: scale(1.15);
   color: yellow;
+}
+
+.mainUL {
+  margin-top: 15px;
+}
+
+.mainUL > li {
+  padding-block: 10px;
+  margin: 0px;
+}
+
+.mainUL > li::marker {
+  color: #61DAFB;
+  font-size: 1.25rem;
+}
+
+main {
+  height: 500px;
+}
+
+.footNotes { 
+  position: fixed;
+  bottom: 0;
+  background-color: black;
+  font-size: 1.2rem;
 }
