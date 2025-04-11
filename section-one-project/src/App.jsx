@@ -1,9 +1,9 @@
-import AboutReact from "./components/aboutReact.jsx"
+import AboutReactPage from "./components/aboutReact.jsx"
 
 function App() {
 
   return (
-    <AboutReact />
+    <AboutReactPage />
   )
 }
 

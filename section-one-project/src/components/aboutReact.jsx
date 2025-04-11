@@ -1,10 +1,10 @@
-import reactLogo from '../assets/react-logo.png'
+import Header from './header.jsx'
+import Footer from './footer.jsx'
 
 function AboutReact(){
 
     return (
         <main>
-            <img src={reactLogo} width="40px" alt="React Logo" />
             <h1>Fun facts about React!</h1>
             <ul>
                 <li>Was first released in 2013</li>
@@ -17,4 +17,15 @@ function AboutReact(){
     )
 }
 
-export default AboutReact;
+function AboutReactPage(){
+    return (
+        <>
+            <Header />
+            <AboutReact />
+            <Footer />
+        </>
+        
+    )
+}
+
+export default AboutReactPage;
