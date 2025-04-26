@@ -6,9 +6,7 @@ export default function IngredientForm() {
     const [ingredients, setIngredients] = useState([]);
 
 
-    function handleSubmit(event){
-        event.preventDefault();
-        const formData = new FormData(event.currentTarget);
+    function addIngredient(formData){
         const newIngredient = formData.get("ingredient");
 
         if (ingredients.includes(newIngredient)){
@@ -33,7 +31,7 @@ export default function IngredientForm() {
 
 
     const ingredientsList = ingredients.map(ingredient => (
-        <li className="bg-lime-200 w-[720px] mb-3 p-2 min-w-3xs max-w-3xl flex justify-between hover:scale-102 hover:bg-lime-300 transition duration-300 ease-in-out cursor-default" key = {ingredient}> 
+        <li className="bg-orange-500 text-white text-lg font-semibold w-[735px] mb-3 p-2 min-w-3xs max-w-3xl flex justify-between hover:scale-102 hover:bg-orange-600 transition duration-300 ease-in-out cursor-default" key = {ingredient}> 
             {ingredient}
 
             <button className="cursor-pointer" 
@@ -52,7 +50,7 @@ export default function IngredientForm() {
     return (
         <main className="pt-8 pb-4 px-8">
 
-            <form onSubmit={handleSubmit} className="flex gap-4 justify-center ">
+            <form action={addIngredient} className="flex gap-4 justify-center ">
 
                 <input 
                     type="text"
@@ -62,7 +60,7 @@ export default function IngredientForm() {
                     className="grow border rounded-sm border-solid outline-[1px] border-black px-2 h-10 shadow-md shadow-amber-50 min-w-3xs max-w-xl"
                 />
 
-                <button type="submit" className="text-sm bg-blue-300 cursor-pointer border border-black px-2 h-10 shadow-md rounded hover:scale-105 transition duration-300 ease-in-out">+ Add Ingredient</button>
+                <button type="submit" className="text-white font-semibold bg-orange-500 cursor-pointer border border-black px-2 h-10 shadow-md rounded hover:scale-105 transition duration-300 ease-in-out">+ Add Ingredient</button>
 
             </form>
 
