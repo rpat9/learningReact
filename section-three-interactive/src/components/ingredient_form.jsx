@@ -1,19 +1,78 @@
-export default function IngredientForm(props) {
-    return (
-        <main className="pt-[30px] pb-[10px] pr-[30px] pl-[30px]">
+import { useState } from "react"
+import TrashIcon from "../assets/trashIcon.jsx"
 
-            <form className="flex gap-[15px] justify-center align-center">
+export default function IngredientForm() {
+
+    const [ingredients, setIngredients] = useState([]);
+
+
+    function handleSubmit(event){
+        event.preventDefault();
+        const formData = new FormData(event.currentTarget);
+        const newIngredient = formData.get("ingredient");
+
+        if (ingredients.includes(newIngredient)){
+            alert("You already added this ingredient");
+            return;
+        } else if (!/^[a-zA-Z\s\-]+$/.test(newIngredient)) {
+            alert("Please enter a valid ingredient");
+            return;
+        }
+
+        setIngredients(prevIngredients => [...prevIngredients, newIngredient]);
+    }
+
+
+    /* remove an item from the list
+    function handleDelete(event){
+        event.preventDefault();
+        const li = event.currentTarget.parentElement;
+        const ingredientText = li.textContent;
+        setIngredients(prevIngredients => prevIngredients.filter(ingredient => ingredient !== ingredientText));
+    }*/
+
+
+    const ingredientsList = ingredients.map(ingredient => (
+        <li className="bg-lime-200 w-[720px] mb-3 p-2 min-w-3xs max-w-3xl flex justify-between hover:scale-102 hover:bg-lime-300 transition duration-300 ease-in-out cursor-default" key = {ingredient}> 
+            {ingredient}
+
+            <button className="cursor-pointer" 
+                aria-label="Remove ingredient button"
+                /*onClick={handleDelete}*/>
+
+                <div className="w-5 h-5">
+                    {TrashIcon}
+                </div>
+                
+            </button>
+        </li>
+    ));
+
+    
+    return (
+        <main className="pt-8 pb-4 px-8">
+
+            <form onSubmit={handleSubmit} className="flex gap-4 justify-center ">
 
                 <input 
                     type="text"
                     placeholder="e.g. oregano"
-                    aria-label="Add ingredient"
-                    className="grow border rounded-sm border-solid outline-[1px] border-black px-2 py-1 shadow-md shadow-amber-50 min-w-3xs max-w-xl"
+                    aria-label="Add ingredient button"
+                    name="ingredient"
+                    className="grow border rounded-sm border-solid outline-[1px] border-black px-2 h-10 shadow-md shadow-amber-50 min-w-3xs max-w-xl"
                 />
 
-                <button type="submit" className="text-[0.875rem] bg-blue-300 cursor-pointer border-black outline-[1px] px-4 py-1 rounded hover:scale-107 transition duration-300 ease-in-out before:content-['+'] before:mr-[5px]">Add Ingredient</button>
+                <button type="submit" className="text-sm bg-blue-300 cursor-pointer border border-black px-2 h-10 shadow-md rounded hover:scale-105 transition duration-300 ease-in-out">+ Add Ingredient</button>
 
             </form>
+
+            <div className="flex justify-center ">
+
+                <ul className="mt-3">
+                    {ingredientsList}
+                </ul>
+
+            </div>
 
         </main>
     )
