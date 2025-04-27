@@ -37,7 +37,7 @@ export default function IngredientList(props){
                     <p>Generate a recipe from your list of ingredients.</p>
                 </div>
 
-                <button onClick={props.toggleRecipe} type="submit" className="text-white font-semibold bg-orange-500 cursor-pointer border border-black px-2 h-10 shadow-md rounded hover:scale-105 transition duration-300 ease-in-out">Get a recipe</button>
+                <button onClick={props.getRecipe} type="submit" className="text-white font-semibold bg-orange-500 cursor-pointer border border-black px-2 h-10 shadow-md rounded hover:scale-105 transition duration-300 ease-in-out">Get a recipe</button>
 
                 </div> : null}
 

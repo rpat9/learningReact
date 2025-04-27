@@ -1,16 +1,18 @@
-import { useState } from "react"
-
-import IngredientList from "./ingredient_list.jsx"
-import ClaudeRecipe from "./claude_recipe.jsx"
+import { useState } from "react";
+import IngredientList from "./ingredient_list.jsx";
+import ClaudeRecipe from "./claude_recipe.jsx";
+import { getRecipeFromClaude } from "../../claudeService.js";
 
 export default function IngredientForm() {
 
     const [ingredients, setIngredients] = useState([]);
+    const [recipe, setRecipe] = useState(false);
 
-    const [recipeShown, setRecipeShown] = useState(false);
 
-    function toggleRecipeShown(){
-        setRecipeShown(prevShown => !prevShown);
+
+    async function getRecipe(){
+        const generatedRecipeMD = await getRecipeFromClaude(ingredients)
+        setRecipe(generatedRecipeMD)
     }
 
 
@@ -59,10 +61,10 @@ export default function IngredientForm() {
             {ingredients.length > 0 && 
                 <IngredientList 
                 ingredientsArray={ingredients} 
-                toggleRecipe={toggleRecipeShown}/>
+                getRecipe={getRecipe}/>
             }
 
-            {recipeShown && <ClaudeRecipe />}
+            {recipe && <ClaudeRecipe recipe={recipe}/>}
 
         </section>
     )
