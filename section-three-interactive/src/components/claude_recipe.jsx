@@ -2,7 +2,8 @@ import ReactMarkdown from "react-markdown"
 
 export default function(props){
     return(
-        <section className="p-6 bg-white shadow-md rounded-2xl max-w-3xl mx-auto mt-8 border border-gray-200">
+        <section className="p-6 bg-white shadow-md rounded-2xl max-w-3xl mx-auto mt-8 border border-gray-200" aria-live="polite">
+          <h2 className="text-2xl font-semibold mb-3 mt-1">MasterChef Claude Recommends: </h2>
             <ReactMarkdown className="prose prose-slate max-w-none"
             components={{
                 h1: ({ node, ...props }) => (
